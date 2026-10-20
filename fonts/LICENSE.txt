@@ -1,0 +1,5 @@
+Шрифты сайта:
+- Unbounded — © The Unbounded Project Authors, https://github.com/googlefonts/unbounded
+- Onest — © The Onest Project Authors, https://github.com/simpals/onest
+Оба распространяются по лицензии SIL Open Font License 1.1: https://openfontlicense.org
+Файлы — подмножества «cyrillic» и «latin» из Google Fonts (скачаны 17.10.2026).

@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Реактивка — химия, которая реагирует</title>
+  <meta name="description" content="Реактивка — бесплатное приложение для iPhone по химии 7 класса: уроки по учебнику Беларуси, виртуальная лаборатория, таблица Менделеева, умная камера и тренажёры.">
+  <meta property="og:title" content="Реактивка — химия, которая реагирует">
+  <meta property="og:description" content="Уроки по учебнику, лаборатория в кармане, таблица Менделеева и умная камера. Бесплатно и без рекламы.">
+  <meta property="og:image" content="images/app-03-lab.jpg">
+  <meta name="theme-color" content="#c8ff2e">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="preload" href="fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="logo" href="index.html" aria-label="Реактивка — на главную">
+        <span class="logo-cell" aria-hidden="true">Rk</span>
+        <span class="logo-name">Реактивка</span>
+      </a>
+      <button class="menu-toggle" aria-label="Меню" aria-expanded="false">☰</button>
+      <nav class="menu">
+        <a href="#table">Возможности</a>
+        <a href="#samples">Экраны</a>
+        <a href="#course">Курс</a>
+        <a href="#contact">Связь</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div>
+          <span class="kicker">Химия · 7 класс · iPhone</span>
+          <h1>Химия,<br>которая <mark>реагирует</mark><span class="pink">.</span></h1>
+          <p class="lead">Уроки по учебнику, лаборатория в кармане, таблица Менделеева и камера, которая читает формулы. Всё, чтобы химия перестала быть скучной.</p>
+          <div class="tags">
+            <span class="tag">Бесплатно</span>
+            <span class="tag">Без рекламы</span>
+            <span class="tag">Работает офлайн</span>
+            <span class="tag">По учебнику РБ</span>
+          </div>
+        </div>
+
+        <div class="bench" id="bench">
+          <div class="bench-head"><b>Попробуй сам</b><span>нажимай на реактивы</span></div>
+          <canvas id="flask" width="720" height="600" role="img" aria-label="Колба с реактивами"></canvas>
+          <div class="shelf" role="group" aria-label="Реактивы">
+            <button class="reagent" data-id="CuSO4" aria-pressed="false">CuSO<sub>4</sub></button>
+            <button class="reagent" data-id="NaOH" aria-pressed="false">NaOH</button>
+            <button class="reagent" data-id="HCl" aria-pressed="false">HCl</button>
+            <button class="reagent" data-id="Zn" aria-pressed="false">Zn</button>
+            <button class="reagent" data-id="AgNO3" aria-pressed="false">AgNO<sub>3</sub></button>
+            <button class="reagent" data-id="NaCl" aria-pressed="false">NaCl</button>
+            <button class="reagent" data-id="php" aria-pressed="false">фенолфталеин</button>
+            <button class="reagent reset" data-reset>Вылить</button>
+          </div>
+          <div class="result" aria-live="polite">
+            <div class="eq" id="equation">Колба пуста</div>
+            <p id="observation">Например, смешай CuSO<sub>4</sub> и NaOH — или капни фенолфталеин в щёлочь.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>H<sub>2</sub>SO<sub>4</sub></span><span>CuSO<sub>4</sub>·5H<sub>2</sub>O</span><span>NaOH</span><span>Ca(OH)<sub>2</sub></span><span>2H<sub>2</sub> + O<sub>2</sub> = 2H<sub>2</sub>O</span><span>Fe<sub>2</sub>O<sub>3</sub></span><span>KMnO<sub>4</sub></span><span>Zn + 2HCl = ZnCl<sub>2</sub> + H<sub>2</sub>↑</span><span>AgCl↓</span><span>NaHCO<sub>3</sub></span><span>CaCO<sub>3</sub></span><span>O<sub>3</sub></span>
+        <span>H<sub>2</sub>SO<sub>4</sub></span><span>CuSO<sub>4</sub>·5H<sub>2</sub>O</span><span>NaOH</span><span>Ca(OH)<sub>2</sub></span><span>2H<sub>2</sub> + O<sub>2</sub> = 2H<sub>2</sub>O</span><span>Fe<sub>2</sub>O<sub>3</sub></span><span>KMnO<sub>4</sub></span><span>Zn + 2HCl = ZnCl<sub>2</sub> + H<sub>2</sub>↑</span><span>AgCl↓</span><span>NaHCO<sub>3</sub></span><span>CaCO<sub>3</sub></span><span>O<sub>3</sub></span>
+      </div>
+    </div>
+
+    <section class="block" id="table">
+      <div class="wrap">
+        <div class="block-head reveal">
+          <span class="block-num" aria-hidden="true">01</span>
+          <h2>Периодическая таблица<br>возможностей</h2>
+          <p>Десять «элементов», из которых состоит Реактивка. Нажми на клетку — покажем экран из приложения.</p>
+        </div>
+        <div class="lab-table">
+          <div class="reveal">
+            <div class="cells" role="group" aria-label="Возможности приложения">
+              <button class="cell" style="--c:#c8ff2e" data-key="table" aria-pressed="true"><span class="n">1</span><span class="s">Тб</span><span class="t">Таблица</span></button>
+              <button class="cell" style="--c:#ff7b1c" data-key="lab" aria-pressed="false"><span class="n">2</span><span class="s">Лб</span><span class="t">Лаборатория</span></button>
+              <button class="cell" style="--c:#19d3e6" data-key="lessons" aria-pressed="false"><span class="n">3</span><span class="s">Ур</span><span class="t">Уроки</span></button>
+              <button class="cell" style="--c:#19d3e6" data-key="quiz" aria-pressed="false"><span class="n">4</span><span class="s">Тр</span><span class="t">Тренажёр</span></button>
+              <button class="cell" style="--c:#ff7b1c" data-key="molecule" aria-pressed="false"><span class="n">5</span><span class="s">3D</span><span class="t">Молекулы</span></button>
+              <button class="cell" style="--c:#ff3d7f" data-key="scan" aria-pressed="false"><span class="n">6</span><span class="s">Км</span><span class="t">Камера</span></button>
+              <button class="cell" style="--c:#ff3d7f" data-key="speak" aria-pressed="false"><span class="n">7</span><span class="s">Гл</span><span class="t">Голос</span></button>
+              <button class="cell" style="--c:#ff3d7f" data-key="indicator" aria-pressed="false"><span class="n">8</span><span class="s">Ин</span><span class="t">Индикатор</span></button>
+              <button class="cell" style="--c:#8c5cff" data-key="map" aria-pressed="false"><span class="n">9</span><span class="s">Кр</span><span class="t">Карта</span></button>
+              <button class="cell" style="--c:#8c5cff" data-key="air" aria-pressed="false"><span class="n">10</span><span class="s">Вз</span><span class="t">Воздух</span></button>
+            </div>
+            <div class="legend">
+              <span><i style="background:#c8ff2e"></i>справочник</span>
+              <span><i style="background:#ff7b1c"></i>опыты</span>
+              <span><i style="background:#19d3e6"></i>учёба</span>
+              <span><i style="background:#ff3d7f"></i>камера и голос</span>
+              <span><i style="background:#8c5cff"></i>химия вокруг</span>
+            </div>
+          </div>
+          <article class="specimen reveal" aria-live="polite">
+            <div class="phone"><img id="spec-img" src="images/app-01-table.jpg" alt="Экран приложения"></div>
+            <div>
+              <span class="stat" id="spec-stat">118 элементов</span>
+              <h3 id="spec-title">Таблица Менделеева</h3>
+              <p id="spec-text">Все элементы и шесть режимов раскраски: категории, состояние, блоки, электроотрицательность, радиус, год открытия. У каждого элемента — карточка со схемой электронных оболочек и сравнение с другим элементом.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="samples">
+      <div class="wrap">
+        <div class="block-head reveal">
+          <span class="block-num" aria-hidden="true">02</span>
+          <h2>Образцы<br>для изучения</h2>
+          <p>Настоящие экраны приложения. Тяни ленту в сторону.</p>
+        </div>
+      </div>
+      <div class="samples" tabindex="0" aria-label="Экраны приложения">
+        <figure class="sample"><div class="phone"><img src="images/app-03-lab.jpg" alt="Лаборатория: голубой осадок гидроксида меди" loading="lazy"></div><figcaption class="label"><span>№ 01</span><span>Лаборатория</span></figcaption></figure>
+        <figure class="sample"><div class="phone"><img src="images/app-02-element.jpg" alt="Карточка элемента железа" loading="lazy"></div><figcaption class="label"><span>№ 02</span><span>Элемент</span></figcaption></figure>
+        <figure class="sample"><div class="phone"><img src="images/app-07-lesson.jpg" alt="Урок о валентности" loading="lazy"></div><figcaption class="label"><span>№ 03</span><span>Урок</span></figcaption></figure>
+        <figure class="sample"><div class="phone"><img src="images/app-11-scan.jpg" alt="Сканер формул" loading="lazy"></div><figcaption class="label"><span>№ 04</span><span>Сканер</span></figcaption></figure>
+        <figure class="sample"><div class="phone"><img src="images/app-04-lab-flask.jpg" alt="Колба с бурым осадком" loading="lazy"></div><figcaption class="label"><span>№ 05</span><span>Колба</span></figcaption></figure>
+        <figure class="sample"><div class="phone"><img src="images/app-09-speak.jpg" alt="Тренажёр «Скажи элемент»" loading="lazy"></div><figcaption class="label"><span>№ 06</span><span>Голос</span></figcaption></figure>
+        <figure class="sample"><div class="phone"><img src="images/app-05-molecule.jpg" alt="Модель молекулы серной кислоты" loading="lazy"></div><figcaption class="label"><span>№ 07</span><span>3D</span></figcaption></figure>
+        <figure class="sample"><div class="phone"><img src="images/app-14-air.jpg" alt="Качество воздуха рядом" loading="lazy"></div><figcaption class="label"><span>№ 08</span><span>Воздух</span></figcaption></figure>
+        <figure class="sample"><div class="phone"><img src="images/app-08-quiz.jpg" alt="Самопроверка" loading="lazy"></div><figcaption class="label"><span>№ 09</span><span>Тест</span></figcaption></figure>
+        <figure class="sample"><div class="phone"><img src="images/app-10-tools.jpg" alt="Инструменты и калькуляторы" loading="lazy"></div><figcaption class="label"><span>№ 10</span><span>Расчёты</span></figcaption></figure>
+      </div>
+    </section>
+
+    <section class="block course" id="course">
+      <div class="wrap">
+        <div class="block-head reveal">
+          <span class="block-num" aria-hidden="true">03</span>
+          <h2>Курс 7 класса<br>в четырёх пробирках</h2>
+          <p>Уроки идут по параграфам учебника, допущенного Министерством образования Республики Беларусь. После каждого — самопроверка с объяснениями.</p>
+        </div>
+        <div class="tubes reveal">
+          <div class="tube-card"><div class="tube"><div class="fill" style="--c:#c8ff2e;--h:96%"></div></div><div><b>Глава I · 12 §</b><h3>Первоначальные понятия</h3><p>Вещества и смеси, атомы, формулы, валентность, уравнения.</p></div></div>
+          <div class="tube-card"><div class="tube"><div class="fill" style="--c:#19d3e6;--h:44%"></div></div><div><b>Глава II · 5 §</b><h3>Кислород</h3><p>Воздух, горение, оксиды, получение кислорода.</p></div></div>
+          <div class="tube-card"><div class="tube"><div class="fill" style="--c:#ff3d7f;--h:44%"></div></div><div><b>Глава III · 5 §</b><h3>Водород</h3><p>Водород, кислоты, металлы в кислотах, соли.</p></div></div>
+          <div class="tube-card"><div class="tube"><div class="fill" style="--c:#8c5cff;--h:36%"></div></div><div><b>Глава IV · 4 §</b><h3>Вода</h3><p>Свойства воды, основания, нейтрализация, экология.</p></div></div>
+        </div>
+        <div class="counters reveal">
+          <div class="counter"><strong>26</strong><span>уроков</span></div>
+          <div class="counter"><strong>171</strong><span>вопрос с разбором</span></div>
+          <div class="counter"><strong>71</strong><span>опыт в лаборатории</span></div>
+          <div class="counter"><strong>10</strong><span>калькуляторов</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap">
+        <div class="block-head reveal">
+          <span class="block-num" aria-hidden="true">04</span>
+          <h2>Знаки безопасности<br>наоборот</h2>
+          <p>На реактивах предупреждают об опасном. Мы предупреждаем о хорошем.</p>
+        </div>
+        <div class="signs reveal">
+          <div class="sign"><div class="diamond"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="14" fill="none" stroke="#15130f" stroke-width="4"/><path d="M10 30 L30 10" stroke="#15130f" stroke-width="4"/></svg></div><div><h3>Без рекламы</h3><p>Ни баннеров, ни роликов, ни покупок внутри.</p></div></div>
+          <div class="sign"><div class="diamond"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="14" r="7" fill="none" stroke="#15130f" stroke-width="4"/><path d="M7 35 C9 25 31 25 33 35" fill="none" stroke="#15130f" stroke-width="4"/></svg></div><div><h3>Без регистрации</h3><p>Открыл — и учишься. Никаких аккаунтов и паролей.</p></div></div>
+          <div class="sign"><div class="diamond"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 16 Q20 4 34 16" fill="none" stroke="#15130f" stroke-width="4"/><path d="M12 22 Q20 15 28 22" fill="none" stroke="#15130f" stroke-width="4"/><path d="M8 34 L32 6" stroke="#ff3d7f" stroke-width="4"/></svg></div><div><h3>Работает офлайн</h3><p>Уроки, лаборатория и камера — без интернета.</p></div></div>
+          <div class="sign"><div class="diamond"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="9" y="17" width="22" height="17" fill="none" stroke="#15130f" stroke-width="4"/><path d="M14 17 V12 a6 6 0 0 1 12 0 V17" fill="none" stroke="#15130f" stroke-width="4"/></svg></div><div><h3>Данные — на телефоне</h3><p>Прогресс, журнал и фото опытов никуда не отправляются.</p></div></div>
+          <div class="sign"><div class="diamond"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 21 L16 29 L33 11" fill="none" stroke="#15130f" stroke-width="5"/></svg></div><div><h3>Разрешения — по делу</h3><p>Камера, геолокация и микрофон — только когда сам открыл функцию.</p></div></div>
+          <div class="sign"><div class="diamond"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 6 L23 16 L34 16 L25 22 L28 33 L20 26 L12 33 L15 22 L6 16 L17 16 Z" fill="none" stroke="#15130f" stroke-width="3.5" stroke-linejoin="round"/></svg></div><div><h3>Бесплатно</h3><p>Полностью. Без пробных периодов и подписок.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="contact">
+      <div class="wrap">
+        <div class="reagent-label reveal">
+          <div>
+            <h2>Есть вопрос<br>или идея?</h2>
+            <p>Пишите — нашли ошибку в уроке, придумали опыт или хотите, чтобы появился 8 класс.</p>
+            <a class="mail-button" href="mailto:lizKovalpochtaWork@proton.me?subject=%D0%A0%D0%B5%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%BA%D0%B0">Написать письмо →</a>
+          </div>
+          <div>
+            <dl>
+              <dt>Реактив</dt><dd>Обратная связь</dd>
+              <dt>Состав</dt><dd>Ваши вопросы и идеи</dd>
+              <dt>E-mail</dt><dd><a href="mailto:lizKovalpochtaWork@proton.me">lizKovalpochtaWork@proton.me</a></dd>
+              <dt>Хранить</dt><dd>в сердце химика</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bottom">
+    <div class="wrap">
+      <span>© 2026 <b>ChemLabs</b></span>
+      <nav>
+        <a href="terms.html">Условия использования</a>
+        <a href="privacy.html">Конфиденциальность</a>
+        <a href="sources.html">Источники</a>
+      </nav>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
